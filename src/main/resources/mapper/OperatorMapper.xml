@@ -6,5 +6,27 @@
     <select id="findOperator" resultType="operatorPo">
         select * from bs_operator where login_name = #{loginName} and password = #{password}
     </select>
+    
+    <insert id="addOperator" parameterType="operatorPo">
+        insert into bs_operator (login_name, password, username, roleId)
+        values (#{loginName}, #{password}, #{username}, #{roleId})
+    </insert>
+    
+    <update id="updateOperator" parameterType="operatorPo">
+        update bs_operator set id = #{id}
+        <if test="loginName != null and loginName != ''">
+            , login_name = #{loginName}
+        </if>
+        <if test="password != null and password != ''">
+            , password = #{password}
+        </if>
+        <if test="username != null and username != ''">
+            , username = #{username}
+        </if>
+        <if test="roleId != null and roleId != ''">
+            , roleId = #{roleId}
+        </if>
+        where id = #{id}
+    </update>
 
 </mapper>

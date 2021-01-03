@@ -1,12 +1,11 @@
 package com.xiaot.factory.config.handle;
 
-import com.xiaot.factory.enumeration.ErrorEnum;
+import com.xiaot.factory.config.exception.CrudException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
 import static com.xiaot.factory.util.Result.fail;
@@ -17,8 +16,11 @@ public class ExceptionHandle {
 
     @ExceptionHandler
     public void handleException(Exception e, HttpServletResponse response) throws IOException {
-        response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(fail(ErrorEnum.LOGIN_PAST).toString());
+        if(e instanceof CrudException) {
+            CrudException exception = (CrudException) e;
+            response.setContentType("application/json;charset=UTF-8");
+            response.getWriter().write(fail(exception.getErrorEnum()).toString());
+        }
     }
 
 }

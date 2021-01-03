@@ -36,4 +36,16 @@ public class OperatorController {
         return fail(ErrorEnum.LOGIN_ERROR);
     }
 
+    @PostMapping("/add")
+    public Map<String, Object> add(OperatorPo operatorPo) {
+        operatorService.addOperator(operatorPo);
+        return success("添加成功");
+    }
+
+    @PostMapping("/update")
+    public Map<String, Object> update(OperatorPo operatorPo) {
+        operatorService.updateOperator(operatorPo);
+        return success("修改成功");
+    }
+
 }

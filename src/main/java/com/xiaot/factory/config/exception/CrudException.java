@@ -8,6 +8,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class CrudException extends RuntimeException {
 
-    private ErrorEnum error;
+    private ErrorEnum errorEnum;
 
 }
