@@ -14,5 +14,13 @@ public class MenuPo {
      * 菜单名
      */
     private String menuName;
+    /**
+     * 菜单url
+     */
+    private String menuUrl;
+    /**
+     * 菜单图片url
+     */
+    private String menu_image;
 
 }
