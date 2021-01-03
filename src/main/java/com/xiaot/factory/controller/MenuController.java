@@ -1,7 +1,9 @@
 package com.xiaot.factory.controller;
 
+import com.xiaot.factory.entity.po.MenuPo;
 import com.xiaot.factory.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +24,18 @@ public class MenuController {
     @RequestMapping("/list")
     public Map<String, Object> menuList() {
         return success(menuService.menuList());
+    }
+
+    @PostMapping("/add")
+    public Map<String, Object> add(MenuPo menuPo) {
+        menuService.addMenu(menuPo);
+        return success("添加成功");
+    }
+
+    @PostMapping("/update")
+    public Map<String, Object> update(MenuPo menuPo) {
+        menuService.updateMenu(menuPo);
+        return success("修改成功");
     }
 
 }
