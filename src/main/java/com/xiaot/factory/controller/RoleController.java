@@ -4,9 +4,11 @@ import com.xiaot.factory.entity.po.RolePo;
 import com.xiaot.factory.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.xiaot.factory.util.Result.success;
@@ -23,16 +25,17 @@ public class RoleController {
 
     @GetMapping("/list")
     public Map<String, Object> roleList() {
-        return success(roleService.roleList());
+        List<RolePo> data = roleService.roleList();
+        return success(data);
     }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public Map<String, Object> add(RolePo rolePo) {
         roleService.addRole(rolePo);
         return success();
     }
 
-    @GetMapping("/update")
+    @PostMapping("/update")
     public Map<String, Object> update(RolePo rolePo) {
         roleService.updateRole(rolePo);
         return success();

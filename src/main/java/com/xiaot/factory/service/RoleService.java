@@ -2,13 +2,15 @@ package com.xiaot.factory.service;
 
 import com.xiaot.factory.entity.po.RolePo;
 
+import java.util.List;
+
 public interface RoleService {
 
     /**
      * 角色列表
      * @return
      */
-    RolePo roleList();
+    List<RolePo> roleList();
 
     /**
      * 添加角色

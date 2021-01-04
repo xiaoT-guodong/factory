@@ -3,6 +3,8 @@ package com.xiaot.factory.dao;
 import com.xiaot.factory.entity.po.RolePo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface RoleDao {
 
@@ -10,7 +12,7 @@ public interface RoleDao {
      * 角色列表
      * @return
      */
-    RolePo roleList();
+    List<RolePo> roleList();
 
     /**
      * 添加角色

@@ -8,6 +8,8 @@ import com.xiaot.factory.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RoleServiceImpl implements RoleService {
 
@@ -15,7 +17,7 @@ public class RoleServiceImpl implements RoleService {
     private RoleDao roleDao;
 
     @Override
-    public RolePo roleList() {
+    public List<RolePo> roleList() {
         return roleDao.roleList();
     }
 
