@@ -22,18 +22,18 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping("/")
+    @RequestMapping
     public Map<String, Object> menuList() {
         return success(menuService.menuList());
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Map<String, Object> add(MenuPo menuPo) {
         menuService.addMenu(menuPo);
         return success("添加成功");
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Map<String, Object> update(MenuPo menuPo) {
         menuService.updateMenu(menuPo);
         return success("修改成功");

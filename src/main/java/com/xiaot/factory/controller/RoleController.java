@@ -20,19 +20,19 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("/")
+    @GetMapping
     public Map<String, Object> roleList() {
         List<RolePo> data = roleService.roleList();
         return success(data);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Map<String, Object> add(RolePo rolePo) {
         roleService.addRole(rolePo);
         return success();
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Map<String, Object> update(RolePo rolePo) {
         roleService.updateRole(rolePo);
         return success();
