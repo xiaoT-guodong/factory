@@ -10,6 +10,7 @@ public enum ErrorEnum {
 
     OPERATOR_ADD(211, "账号添加失败！"),
     OPERATOR_UPDATE(212, "账号修改失败！"),
+    OPERATOR_EXIT(213, "账号已存在，请重新输入！"),
 
     MENU_ADD(221, "菜单添加失败！"),
     MENU_UPDATE(222, "菜单修改失败！"),

@@ -6,6 +6,13 @@
     <select id="findOperator" resultType="operatorPo">
         select * from bs_operator where login_name = #{loginName} and password = #{password}
     </select>
+
+    <select id="loginNameExist" resultType="int">
+        select count(1) from bs_operator where login_name = #{loginName}
+        <if test="id != null">
+            and id != #{id}
+        </if>
+    </select>
     
     <insert id="addOperator" parameterType="operatorPo">
         insert into bs_operator (login_name, password, username, roleId)

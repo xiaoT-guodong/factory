@@ -21,6 +21,9 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Override
     public void addOperator(OperatorPo operatorPo) {
+        if (operatorDao.loginNameExist(operatorPo.getId(), operatorPo.getLoginName()) > 0) {
+            throw new CrudException(ErrorEnum.OPERATOR_EXIT);
+        }
         if(operatorDao.addOperator(operatorPo) < 1) {
             throw new CrudException(ErrorEnum.OPERATOR_ADD);
         }
@@ -28,6 +31,9 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Override
     public void updateOperator(OperatorPo operatorPo) {
+        if (operatorDao.loginNameExist(operatorPo.getId(), operatorPo.getLoginName()) > 0) {
+            throw new CrudException(ErrorEnum.OPERATOR_EXIT);
+        }
         if(operatorDao.updateOperator(operatorPo) < 1) {
             throw new CrudException(ErrorEnum.OPERATOR_UPDATE);
         }

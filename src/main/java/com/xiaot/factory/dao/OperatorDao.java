@@ -16,6 +16,13 @@ public interface OperatorDao {
     OperatorPo findOperator(@Param("loginName") String loginName, @Param("password") String password);
 
     /**
+     * 查找登录账号是否存在
+     * @param loginName
+     * @return
+     */
+    int loginNameExist(@Param("id") Integer id, @Param("loginName") String loginName);
+
+    /**
      * 添加操作员
      * @param operatorPo
      * @return
