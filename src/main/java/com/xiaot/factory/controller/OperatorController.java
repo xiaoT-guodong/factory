@@ -5,6 +5,7 @@ import com.xiaot.factory.enumeration.ErrorEnum;
 import com.xiaot.factory.service.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,13 +35,13 @@ public class OperatorController {
         return fail(ErrorEnum.LOGIN_ERROR);
     }
 
-    @PostMapping("/operator/add")
+    @PostMapping("/operator")
     public Map<String, Object> add(OperatorPo operatorPo) {
         operatorService.addOperator(operatorPo);
         return success("添加成功");
     }
 
-    @PostMapping("/operator/update")
+    @PutMapping("/operator")
     public Map<String, Object> update(OperatorPo operatorPo) {
         operatorService.updateOperator(operatorPo);
         return success("修改成功");
