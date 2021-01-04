@@ -20,7 +20,9 @@ public class ExceptionHandle {
             CrudException exception = (CrudException) e;
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(fail(exception.getErrorEnum()).toString());
+            return;
         }
+        e.printStackTrace();
     }
 
 }
