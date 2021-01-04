@@ -15,7 +15,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Object user = request.getSession().getAttribute("username");
+        Object user = request.getSession().getAttribute("loginUser");
         if(user == null) {
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(fail(ErrorEnum.LOGIN_PAST).toString());

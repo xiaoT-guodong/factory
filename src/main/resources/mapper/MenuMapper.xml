@@ -4,7 +4,7 @@
 <mapper namespace="com.xiaot.factory.dao.MenuDao">
 
     <select id="menuList" resultType="menuPo">
-        select * from bs_menu
+        select bm.* from rf_menu_role rmr inner join bs_menu bm on rmr.menu_id = bm.id where rmr.role_id = #{roleId}
     </select>
 
     <insert id="addMenu" parameterType="menuPo">
