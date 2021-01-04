@@ -10,6 +10,9 @@ import java.util.Map;
 
 import static com.xiaot.factory.util.Result.success;
 
+/**
+ * 角色菜单权限相关接口
+ */
 @RestController
 @RequestMapping("/roleMenu")
 public class RoleMenuController {
