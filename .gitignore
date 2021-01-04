@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### myself ###
+src/main/resources/application-develop.yml
