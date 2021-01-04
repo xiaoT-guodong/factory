@@ -41,6 +41,10 @@ public class Result {
         return init(200, msg, data);
     }
 
+    public static Map<String, Object> fail() {
+        return init(500, "开发人员正在努力中！", null);
+    }
+
     public static Map<String, Object> fail(ErrorEnum errorEnum) {
         return init(errorEnum.getCode(), errorEnum.getMsg(), null);
     }

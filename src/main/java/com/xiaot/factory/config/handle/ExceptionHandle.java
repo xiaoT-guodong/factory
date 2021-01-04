@@ -16,13 +16,14 @@ public class ExceptionHandle {
 
     @ExceptionHandler
     public void handleException(Exception e, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json;charset=UTF-8");
         if(e instanceof CrudException) {
             CrudException exception = (CrudException) e;
-            response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(fail(exception.getErrorEnum()).toString());
             return;
         }
         e.printStackTrace();
+        response.getWriter().write(fail().toString());
     }
 
 }
