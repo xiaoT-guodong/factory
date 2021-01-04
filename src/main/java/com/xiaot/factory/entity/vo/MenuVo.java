@@ -1,13 +1,17 @@
-package com.xiaot.factory.entity.po;
+package com.xiaot.factory.entity.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MenuPo {
+@Accessors(chain = true)
+public class MenuVo {
 
     private Integer id;
     /**
@@ -26,5 +30,9 @@ public class MenuPo {
      * 菜单图片url
      */
     private String menuImage;
+    /**
+     * 子菜单
+     */
+    private List<MenuVo> children;
 
 }

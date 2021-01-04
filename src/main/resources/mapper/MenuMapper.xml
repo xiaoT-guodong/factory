@@ -8,8 +8,8 @@
     </select>
 
     <insert id="addMenu" parameterType="menuPo">
-        insert into bs_menu(menu_name, menu_url, menu_image)
-        values(#{menuName}, #{menuUrl}, #{menuImage})
+        insert into bs_menu(p_id, menu_name, menu_url, menu_image)
+        values(#{pId}, #{menuName}, #{menuUrl}, #{menuImage})
     </insert>
 
     <update id="updateMenu" parameterType="menuPo">
@@ -17,12 +17,8 @@
         <if test="menuName != null and menuName != ''">
             , menu_name = #{menuName}
         </if>
-        <if test="menuUrl != null and menuUrl != ''">
             , menu_url = #{menuUrl}
-        </if>
-        <if test="menuImage != null and menuImage != ''">
             , menu_image = #{menuImage}
-        </if>
         where id = #{id}
     </update>
 

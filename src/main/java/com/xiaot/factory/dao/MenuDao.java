@@ -3,6 +3,8 @@ package com.xiaot.factory.dao;
 import com.xiaot.factory.entity.po.MenuPo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface MenuDao {
 
@@ -10,7 +12,7 @@ public interface MenuDao {
      * 菜单列表
      * @return
      */
-    MenuPo menuList();
+    List<MenuPo> menuList();
 
     /**
      * 添加菜单
