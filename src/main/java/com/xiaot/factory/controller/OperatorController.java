@@ -4,7 +4,6 @@ import com.xiaot.factory.entity.po.OperatorPo;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import com.xiaot.factory.service.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +19,6 @@ import static com.xiaot.factory.util.Result.success;
  */
 @RestController
 @RequestMapping("/")
-@ConfigurationProperties("request")
 public class OperatorController {
 
     @Autowired
