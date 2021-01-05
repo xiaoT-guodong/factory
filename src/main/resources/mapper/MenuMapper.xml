@@ -4,8 +4,9 @@
 <mapper namespace="com.xiaot.factory.dao.MenuDao">
 
     <select id="menuList" resultType="menuPo">
-        select bm.* from rf_role_menu rmr inner join bs_menu bm on rmr.menu_id = bm.id
+        select bm.* from bs_menu bm
         <if test="roleId != null">
+            inner join rf_role_menu rmr on bm.id = rmr.menu_id
             where rmr.role_id = #{roleId}
         </if>
     </select>
