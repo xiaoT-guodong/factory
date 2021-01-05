@@ -20,20 +20,15 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuVo> menuList(Integer roleId) {
-        List<MenuPo> menuPos = menuDao.menuList(roleId);
-        List<MenuVo> menuVos = new ArrayList<>();
-        for (MenuPo menuPo : menuPos) {
-            if (menuPo.getPId().equals(0)) {
-                MenuVo menuVo = new MenuVo().setId(menuPo.getId())
-                                            .setPId(menuPo.getPId())
-                                            .setMenuName(menuPo.getMenuName())
-                                            .setMenuUrl(menuPo.getMenuUrl())
-                                            .setMenuImage(menuPo.getMenuImage());
-                menuSetChild(menuPos, menuVo);
-                menuVos.add(menuVo);
+        List<MenuVo> menuVos = menuDao.menuList(roleId);
+        List<MenuVo> menuList = new ArrayList<>();
+        for (MenuVo menuVo : menuVos) {
+            if (menuVo.getPId().equals(0)) {
+                menuSetChild(menuVos, menuVo);
+                menuList.add(menuVo);
             }
         }
-        return menuVos;
+        return menuList;
     }
 
     /**
@@ -41,15 +36,10 @@ public class MenuServiceImpl implements MenuService {
      * @param menuPos pid为0的菜单
      * @param menuVo 需要设置子菜单的菜单
      */
-    private void menuSetChild(List<MenuPo> menuPos, MenuVo menuVo) {
+    private void menuSetChild(List<MenuVo> menuPos, MenuVo menuVo) {
         List<MenuVo> childVos = new ArrayList<>();
-        for (MenuPo childPo : menuPos) {
-            if (childPo.getPId().equals(menuVo.getId())) {
-                MenuVo childVo = new MenuVo().setId(childPo.getId())
-                                            .setPId(childPo.getPId())
-                                            .setMenuName(childPo.getMenuName())
-                                            .setMenuUrl(childPo.getMenuUrl())
-                                            .setMenuImage(childPo.getMenuImage());
+        for (MenuVo childVo : menuPos) {
+            if (childVo.getPId().equals(menuVo.getId())) {
                 menuSetChild(menuPos, childVo);
                 childVos.add(childVo);
             }
@@ -69,6 +59,47 @@ public class MenuServiceImpl implements MenuService {
         if(menuDao.updateMenu(menuPo) < 1) {
             throw new CrudException(ErrorEnum.MENU_UPDATE);
         }
+    }
+
+    @Override
+    public List<MenuVo> menuListPermission(Integer roleId) {
+        List<MenuVo> allMenus = menuDao.menuList(null);
+        List<MenuVo> menuVos = menuDao.menuList(roleId);
+        List<MenuVo> menuList = new ArrayList<>();
+        for (MenuVo allMenu : allMenus) {
+            for (MenuVo menuVo : menuVos) {
+                if (allMenu.equals(menuVo)) {
+                    allMenu.setChecked(true);
+                }
+            }
+            if (allMenu.getPId().equals(0)) {
+                allMenuSetChild(allMenus, allMenu, menuVos);
+                menuList.add(allMenu);
+            }
+        }
+        return menuList;
+    }
+
+    /**
+     * 设置子菜单同时选中拥有的菜单
+     * @param menuVos pid为0的菜单
+     * @param menuVo 需要设置子菜单的菜单
+     * @param hasMenu 拥有的菜单列表
+     */
+    private void allMenuSetChild(List<MenuVo> menuVos, MenuVo menuVo, List<MenuVo> hasMenu) {
+        List<MenuVo> childVos = new ArrayList<>();
+        for (MenuVo childVo : menuVos) {
+            for (MenuVo menu : hasMenu) {
+                if (childVo.equals(menu)) {
+                    childVo.setChecked(true);
+                }
+            }
+            if (childVo.getPId().equals(menuVo.getId())) {
+                menuSetChild(menuVos, childVo);
+                childVos.add(childVo);
+            }
+        }
+        menuVo.setChildren(childVos);
     }
 
 }

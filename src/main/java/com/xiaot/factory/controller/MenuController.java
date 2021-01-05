@@ -39,9 +39,10 @@ public class MenuController {
         return success("修改成功");
     }
 
-    @GetMapping("/all")
-    public Map<String, Object> menuListAll() {
-        return success(menuService.menuList(null));
+    @GetMapping("/permission")
+    public Map<String, Object> menuListPermission(HttpServletRequest request) {
+        OperatorPo loginUser = (OperatorPo) request.getSession().getAttribute("loginUser");
+        return success(menuService.menuListPermission(loginUser.getRoleId()));
     }
 
 }

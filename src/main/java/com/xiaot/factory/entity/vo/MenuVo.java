@@ -34,5 +34,9 @@ public class MenuVo {
      * 子菜单
      */
     private List<MenuVo> children;
+    /**
+     * 是否已拥有该菜单权限
+     */
+    private Boolean checked = false;
 
 }

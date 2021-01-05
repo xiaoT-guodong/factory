@@ -25,4 +25,10 @@ public interface MenuService {
      */
     void updateMenu(MenuPo menuPo);
 
+    /**
+     * 拥有的菜单列表
+     * @return
+     */
+    List<MenuVo> menuListPermission(Integer roleId);
+
 }

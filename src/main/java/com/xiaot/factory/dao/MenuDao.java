@@ -1,6 +1,7 @@
 package com.xiaot.factory.dao;
 
 import com.xiaot.factory.entity.po.MenuPo;
+import com.xiaot.factory.entity.vo.MenuVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,7 +14,7 @@ public interface MenuDao {
      * 菜单列表
      * @return
      */
-    List<MenuPo> menuList(@Param("roleId") Integer roleId);
+    List<MenuVo> menuList(@Param("roleId") Integer roleId);
 
     /**
      * 添加菜单
