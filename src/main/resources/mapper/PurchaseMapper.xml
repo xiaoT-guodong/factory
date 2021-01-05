@@ -3,8 +3,9 @@
 
 <mapper namespace="com.xiaot.factory.dao.PurchaseDao">
 
-    <select id="listPurchase" resultType="purchasePo">
-        select * from od_purchase
+    <select id="listPurchase" resultType="purchaseVo">
+        select op.id, oi.inventory_name name, op.purchase_num num, purchase_price price, purchase_total total, oi.inventory_comment comment
+        from od_purchase op inner join od_inventory oi on op.inventory_id = oi.id
     </select>
 
     <insert id="addPurchase" parameterType="purChasePo">

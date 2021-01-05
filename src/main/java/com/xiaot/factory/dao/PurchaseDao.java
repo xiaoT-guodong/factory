@@ -1,6 +1,7 @@
 package com.xiaot.factory.dao;
 
 import com.xiaot.factory.entity.po.PurchasePo;
+import com.xiaot.factory.entity.vo.PurchaseVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface PurchaseDao {
      * 进库流水
      * @return
      */
-    List<PurchasePo> listPurchase();
+    List<PurchaseVo> listPurchase();
 
     /**
      * 添加进货流水

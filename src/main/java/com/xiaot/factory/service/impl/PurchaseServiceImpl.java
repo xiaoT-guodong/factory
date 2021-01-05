@@ -5,6 +5,7 @@ import com.xiaot.factory.dao.InventoryDao;
 import com.xiaot.factory.dao.PurchaseDao;
 import com.xiaot.factory.entity.po.InventoryPo;
 import com.xiaot.factory.entity.po.PurchasePo;
+import com.xiaot.factory.entity.vo.PurchaseVo;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import com.xiaot.factory.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     private InventoryDao inventoryDao;
 
     @Override
-    public List<PurchasePo> list() {
+    public List<PurchaseVo> list() {
         return purchaseDao.listPurchase();
     }
 
