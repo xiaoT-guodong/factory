@@ -1,13 +1,14 @@
 package com.xiaot.factory.config.exception;
 
 import com.xiaot.factory.enumeration.ErrorEnum;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-@Data
-@AllArgsConstructor
-public class CrudException extends RuntimeException {
+/**
+ * 增删改异常
+ */
+public class CrudException extends BaseException {
 
-    private ErrorEnum errorEnum;
+    public CrudException(ErrorEnum errorEnum) {
+        super(errorEnum);
+    }
 
 }
