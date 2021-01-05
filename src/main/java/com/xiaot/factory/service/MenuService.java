@@ -11,7 +11,7 @@ public interface MenuService {
      * 菜单列表
      * @return
      */
-    List<MenuVo> menuList();
+    List<MenuVo> menuList(Integer roleId);
 
     /**
      * 添加菜单

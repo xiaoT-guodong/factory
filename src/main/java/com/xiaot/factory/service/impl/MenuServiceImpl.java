@@ -19,8 +19,8 @@ public class MenuServiceImpl implements MenuService {
     private MenuDao menuDao;
 
     @Override
-    public List<MenuVo> menuList() {
-        List<MenuPo> menuPos = menuDao.menuList();
+    public List<MenuVo> menuList(Integer roleId) {
+        List<MenuPo> menuPos = menuDao.menuList(roleId);
         List<MenuVo> menuVos = new ArrayList<>();
         for (MenuPo menuPo : menuPos) {
             if (menuPo.getPId().equals(0)) {

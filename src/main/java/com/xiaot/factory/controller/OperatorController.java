@@ -29,7 +29,7 @@ public class OperatorController {
     public Map<String, Object> login(String loginName, String password, HttpServletRequest request) {
         OperatorPo operator = operatorService.findOperator(loginName, password);
         if(operator != null) {
-            request.getSession().setAttribute("username", operator);
+            request.getSession().setAttribute("loginUser", operator);
             return success(operator);
         }
         return fail(ErrorEnum.LOGIN_ERROR);

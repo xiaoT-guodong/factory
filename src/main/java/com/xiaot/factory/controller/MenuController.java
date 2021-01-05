@@ -1,6 +1,7 @@
 package com.xiaot.factory.controller;
 
 import com.xiaot.factory.entity.po.MenuPo;
+import com.xiaot.factory.entity.po.OperatorPo;
 import com.xiaot.factory.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 import static com.xiaot.factory.util.Result.success;
@@ -23,8 +25,9 @@ public class MenuController {
     private MenuService menuService;
 
     @RequestMapping
-    public Map<String, Object> menuList() {
-        return success(menuService.menuList());
+    public Map<String, Object> menuList(HttpServletRequest request) {
+        OperatorPo loginUser = (OperatorPo) request.getSession().getAttribute("loginUser");
+        return success(menuService.menuList(loginUser.getRoleId()));
     }
 
     @PostMapping
