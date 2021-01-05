@@ -42,7 +42,7 @@ public class Result {
     }
 
     public static Map<String, Object> fail() {
-        return init(500, "开发人员正在努力中！", null);
+        return init(ErrorEnum.ERROR.getCode(), ErrorEnum.ERROR.getMsg(), null);
     }
 
     public static Map<String, Object> fail(ErrorEnum errorEnum) {
