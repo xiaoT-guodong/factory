@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaot.factory.dao.PurchaseDao">
+
+    <select id="listPurchase" resultType="purchasePo">
+        select * from od_purchase
+    </select>
+
+    <insert id="addPurchase" parameterType="purChasePo">
+        insert into od_purchase(purchase_name, purchase_num, purchase_price, purchase_total, purchase_comment, create_time)
+        values(#{purchaseName}, #{purchaseNum}, #{purchasePrice}, #{purchaseTotal}, #{purchaseComment}, now())
+    </insert>
+
+    <update id="updatePurchase" parameterType="purChasePo">
+        update od_purchase set id = #{id}
+        <if test="purchaseName != null and purchaseName != ''">
+            , purchase_name = #{purchaseName}
+        </if>
+        <if test="purchaseNum != null and purchaseNum != ''">
+            , purchase_num = #{purchaseNum}
+        </if>
+        <if test="purchasePrice != null and purchasePrice != ''">
+            , purchase_price = #{purchasePrice}
+        </if>
+        <if test="purchaseTotal != null and purchaseTotal != ''">
+            , purchase_total = #{purchaseTotal}
+        </if>
+        <if test="purchaseComment != null and purchaseComment != ''">
+            , purchase_comment = #{purchaseComment}
+        </if>
+        where id = #{id}
+    </update>
+
+</mapper>
