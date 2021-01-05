@@ -8,15 +8,12 @@
     </select>
 
     <insert id="addPurchase" parameterType="purChasePo">
-        insert into od_purchase(purchase_name, purchase_num, purchase_price, purchase_total, purchase_comment, create_time)
-        values(#{purchaseName}, #{purchaseNum}, #{purchasePrice}, #{purchaseTotal}, #{purchaseComment}, now())
+        insert into od_purchase(inventory_id, purchase_num, purchase_price, purchase_total, create_time)
+        values(#{inventoryId}, #{purchaseNum}, #{purchasePrice}, #{purchaseTotal}, now())
     </insert>
 
     <update id="updatePurchase" parameterType="purChasePo">
         update od_purchase set id = #{id}
-        <if test="purchaseName != null and purchaseName != ''">
-            , purchase_name = #{purchaseName}
-        </if>
         <if test="purchaseNum != null and purchaseNum != ''">
             , purchase_num = #{purchaseNum}
         </if>
@@ -25,9 +22,6 @@
         </if>
         <if test="purchaseTotal != null and purchaseTotal != ''">
             , purchase_total = #{purchaseTotal}
-        </if>
-        <if test="purchaseComment != null and purchaseComment != ''">
-            , purchase_comment = #{purchaseComment}
         </if>
         where id = #{id}
     </update>

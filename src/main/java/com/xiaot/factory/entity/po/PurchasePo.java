@@ -19,9 +19,9 @@ public class PurchasePo {
     private Integer id;
 
     /**
-     * 采购物品名称
+     * 库存物品id
      */
-    private String purchaseName;
+    private Integer inventoryId;
 
     /**
      * 采购数量
@@ -37,11 +37,6 @@ public class PurchasePo {
      * 采购总价
      */
     private BigDecimal purchaseTotal;
-
-    /**
-     * 物品描述
-     */
-    private String purchaseComment;
 
     /**
      * 采购时间

@@ -18,9 +18,9 @@ public class SalesPo {
     private Integer id;
     
     /**
-     * 卖出物品名称
+     * 库存物品id
      */
-    private String salesName;
+    private Integer inventoryId;
 
     /**
      * 卖出数量
@@ -36,11 +36,6 @@ public class SalesPo {
      * 卖出总价
      */
     private BigDecimal salesTotal;
-
-    /**
-     * 物品描述
-     */
-    private String salesComment;
 
     /**
      * 卖出时间

@@ -22,6 +22,7 @@ public enum ErrorEnum {
 
     PURCHASE_ADD(221, "进货添加失败！"),
     PURCHASE_UPDATE(222, "进货修改失败！"),
+    PURCHASE_INVENTORY_UPDATE(223, "库存修改失败！"),
 
     INVENTORY_ADD(226, "库存添加失败！"),
     INVENTORY_UPDATE(227, "库存修改失败！"),
