@@ -1,6 +1,7 @@
 package com.xiaot.factory.entity.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.xiaot.factory.util.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,13 +38,13 @@ public class InventoryPo {
     /**
      * 创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = DateUtil.PATTERN, timezone = DateUtil.TIMEZONE)
     private Date createTime;
 
     /**
      * 修改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = DateUtil.PATTERN, timezone = DateUtil.TIMEZONE)
     private Date updateTime;
     
 }
