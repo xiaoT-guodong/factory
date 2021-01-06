@@ -31,4 +31,8 @@
         select inventory_num from od_inventory where id = #{inventoryId}
     </select>
 
+    <select id="listSelect" resultType="inventorySelectVo">
+        select id, inventory_name name from od_inventory
+    </select>
+
 </mapper>

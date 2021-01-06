@@ -3,6 +3,7 @@ package com.xiaot.factory.service.impl;
 import com.xiaot.factory.config.exception.CrudException;
 import com.xiaot.factory.dao.InventoryDao;
 import com.xiaot.factory.entity.po.InventoryPo;
+import com.xiaot.factory.entity.vo.InventorySelectVo;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import com.xiaot.factory.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class InventoryServiceImpl implements InventoryService {
         if(inventoryDao.updateInventory(inventoryPo) < 1) {
             throw new CrudException(ErrorEnum.INVENTORY_UPDATE);
         }
+    }
+
+    @Override
+    public List<InventorySelectVo> listSelect() {
+        return inventoryDao.listSelect();
     }
 
 }

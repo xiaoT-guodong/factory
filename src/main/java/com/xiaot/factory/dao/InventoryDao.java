@@ -1,6 +1,7 @@
 package com.xiaot.factory.dao;
 
 import com.xiaot.factory.entity.po.InventoryPo;
+import com.xiaot.factory.entity.vo.InventorySelectVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -34,5 +35,11 @@ public interface InventoryDao {
      * @return
      */
     int findInventoryNum(Integer inventoryId);
+
+    /**
+     * 库存物品下拉
+     * @return
+     */
+    List<InventorySelectVo> listSelect();
 
 }

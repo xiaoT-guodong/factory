@@ -33,4 +33,9 @@ public class InventoryController {
         return success();
     }
 
+    @GetMapping("/select")
+    public Map<String, Object> allInventory() {
+        return success(inventoryService.listSelect());
+    }
+
 }

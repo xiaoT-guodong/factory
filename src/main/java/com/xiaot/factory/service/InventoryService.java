@@ -1,6 +1,7 @@
 package com.xiaot.factory.service;
 
 import com.xiaot.factory.entity.po.InventoryPo;
+import com.xiaot.factory.entity.vo.InventorySelectVo;
 
 import java.util.List;
 
@@ -23,5 +24,11 @@ public interface InventoryService {
      * @param inventoryPo
      */
     void updateInventory(InventoryPo inventoryPo);
+
+    /**
+     * 库存物品下拉
+     * @return
+     */
+    List<InventorySelectVo> listSelect();
 
 }
