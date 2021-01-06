@@ -4,6 +4,7 @@ import com.xiaot.factory.config.exception.BaseException;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.MyBatisSystemException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -26,6 +27,10 @@ public class ExceptionHandle {
         }
         if(e instanceof MyBatisSystemException) {
             response.getWriter().write(fail(ErrorEnum.ERROR_DATA_SOURCE).toString());
+            return;
+        }
+        if(e instanceof HttpRequestMethodNotSupportedException) {
+            response.getWriter().write(fail(ErrorEnum.REQUEST_METHOD).toString());
             return;
         }
         e.printStackTrace();
