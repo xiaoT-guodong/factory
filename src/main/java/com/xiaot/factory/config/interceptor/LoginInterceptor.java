@@ -6,7 +6,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.xiaot.factory.util.Result.fail;
+import static com.xiaot.factory.util.ResultUtil.fail;
 
 /**
  * 登录拦截：未登录返回错误信息

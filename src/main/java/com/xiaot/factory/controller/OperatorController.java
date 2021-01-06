@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-import static com.xiaot.factory.util.Result.fail;
-import static com.xiaot.factory.util.Result.success;
+import static com.xiaot.factory.util.ResultUtil.fail;
+import static com.xiaot.factory.util.ResultUtil.success;
 
 /**
  * 登录相关接口

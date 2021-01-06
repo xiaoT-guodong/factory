@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-import static com.xiaot.factory.util.Result.success;
+import static com.xiaot.factory.util.ResultUtil.success;
 
 /**
  * 角色相关接口

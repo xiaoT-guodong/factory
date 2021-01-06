@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.xiaot.factory.util.Result.fail;
+import static com.xiaot.factory.util.ResultUtil.fail;
 
 @Slf4j
 @ControllerAdvice

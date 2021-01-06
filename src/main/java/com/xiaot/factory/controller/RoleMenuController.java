@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-import static com.xiaot.factory.util.Result.success;
+import static com.xiaot.factory.util.ResultUtil.success;
 
 /**
  * 角色菜单权限相关接口

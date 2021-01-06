@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-import static com.xiaot.factory.util.Result.success;
+import static com.xiaot.factory.util.ResultUtil.success;
 
 @RestController
 @RequestMapping("/inventory")

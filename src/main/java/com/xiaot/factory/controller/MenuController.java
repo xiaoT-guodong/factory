@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-import static com.xiaot.factory.util.Result.success;
+import static com.xiaot.factory.util.ResultUtil.success;
 
 /**
  * 菜单相关接口

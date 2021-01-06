@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 返回前端格式
  */
-public class Result {
+public class ResultUtil {
 
     /**
      * 初始化返回map
