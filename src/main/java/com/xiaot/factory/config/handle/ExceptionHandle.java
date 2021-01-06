@@ -3,7 +3,7 @@ package com.xiaot.factory.config.handle;
 import com.xiaot.factory.config.exception.BaseException;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.jdbc.CannotGetJdbcConnectionException;
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -24,7 +24,7 @@ public class ExceptionHandle {
             response.getWriter().write(fail(exception.getErrorEnum()).toString());
             return;
         }
-        if(e instanceof CannotGetJdbcConnectionException) {
+        if(e instanceof PersistenceException) {
             response.getWriter().write(fail(ErrorEnum.ERROR_DATA_SOURCE).toString());
             return;
         }
