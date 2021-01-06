@@ -1,7 +1,9 @@
 package com.xiaot.factory.config.handle;
 
 import com.xiaot.factory.config.exception.BaseException;
+import com.xiaot.factory.enumeration.ErrorEnum;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -20,6 +22,10 @@ public class ExceptionHandle {
         if(e instanceof BaseException) {
             BaseException exception = (BaseException) e;
             response.getWriter().write(fail(exception.getErrorEnum()).toString());
+            return;
+        }
+        if(e instanceof CannotGetJdbcConnectionException) {
+            response.getWriter().write(fail(ErrorEnum.ERROR_DATA_SOURCE).toString());
             return;
         }
         e.printStackTrace();

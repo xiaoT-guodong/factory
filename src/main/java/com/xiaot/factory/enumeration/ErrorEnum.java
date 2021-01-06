@@ -6,6 +6,7 @@ package com.xiaot.factory.enumeration;
 public enum ErrorEnum {
 
     ERROR(500, "开发人员正在努力中！"),
+    ERROR_DATA_SOURCE(501, "数据库连接超时！"),
 
     LOGIN_ERROR(201, "账号或密码错误，请重新登录！"),
     LOGIN_PAST(202, "未登录或登录已过期，请重新登录！"),
