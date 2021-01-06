@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaot.factory.dao.SalesDao">
+
+    <select id="listSales" resultType="purchaseSalesVo">
+        select op.id, oi.inventory_name name, op.sales_num num, sales_price price, sales_total total, oi.inventory_comment comment
+        from od_sales op inner join od_inventory oi on op.inventory_id = oi.id
+    </select>
+
+    <insert id="addSales" parameterType="salesPo">
+        insert into od_sales(inventory_id, sales_num, sales_price, sales_total, create_time)
+        values(#{inventoryId}, #{salesNum}, #{salesPrice}, #{salesTotal}, now())
+    </insert>
+
+    <update id="updateSales" parameterType="salesPo">
+        update od_sales set id = #{id}
+        <if test="salesNum != null and salesNum != ''">
+            , sales_num = #{salesNum}
+        </if>
+        <if test="salesPrice != null and salesPrice != ''">
+            , sales_price = #{salesPrice}
+        </if>
+        <if test="salesTotal != null and salesTotal != ''">
+            , sales_total = #{salesTotal}
+        </if>
+        where id = #{id}
+    </update>
+
+</mapper>

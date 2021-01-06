@@ -3,17 +3,17 @@
 
 <mapper namespace="com.xiaot.factory.dao.PurchaseDao">
 
-    <select id="listPurchase" resultType="purchaseVo">
+    <select id="listPurchase" resultType="purchaseSalesVo">
         select op.id, oi.inventory_name name, op.purchase_num num, purchase_price price, purchase_total total, oi.inventory_comment comment
         from od_purchase op inner join od_inventory oi on op.inventory_id = oi.id
     </select>
 
-    <insert id="addPurchase" parameterType="purChasePo">
+    <insert id="addPurchase" parameterType="purchasePo">
         insert into od_purchase(inventory_id, purchase_num, purchase_price, purchase_total, create_time)
         values(#{inventoryId}, #{purchaseNum}, #{purchasePrice}, #{purchaseTotal}, now())
     </insert>
 
-    <update id="updatePurchase" parameterType="purChasePo">
+    <update id="updatePurchase" parameterType="purchasePo">
         update od_purchase set id = #{id}
         <if test="purchaseNum != null and purchaseNum != ''">
             , purchase_num = #{purchaseNum}

@@ -1,7 +1,7 @@
 package com.xiaot.factory.service;
 
 import com.xiaot.factory.entity.po.PurchasePo;
-import com.xiaot.factory.entity.vo.PurchaseVo;
+import com.xiaot.factory.entity.vo.PurchaseSalesVo;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface PurchaseService {
      * 进库流水
      * @return
      */
-    List<PurchaseVo> list();
+    List<PurchaseSalesVo> list();
 
     /**
      * 添加进货流水

@@ -29,6 +29,8 @@ public enum ErrorEnum {
 
     SALES_ADD(231, "出货添加失败！"),
     SALES_UPDATE(232, "出货修改失败！"),
+    SALES_INVENTORY_UPDATE(233, "库存修改失败！"),
+    SALES_SURPLUS(234, "库存不足！"),
     ;
 
     /**
