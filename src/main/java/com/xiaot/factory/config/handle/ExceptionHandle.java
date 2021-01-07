@@ -26,6 +26,7 @@ public class ExceptionHandle {
             return;
         }
         if(e instanceof MyBatisSystemException) {
+            e.printStackTrace();
             response.getWriter().write(fail(ErrorEnum.ERROR_DATA_SOURCE).toString());
             return;
         }

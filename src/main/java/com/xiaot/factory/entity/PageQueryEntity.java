@@ -8,12 +8,12 @@ public class PageQueryEntity {
     /**
      * 页码
      */
-    private Integer pageNo;
+    private Integer pageNo = 1;
 
     /**
      * 条数
      */
-    private Integer pageSize;
+    private Integer pageSize = 10;
 
     /**
      * 排序字段
@@ -26,11 +26,11 @@ public class PageQueryEntity {
     private String order;
 
     public Integer getPageNo() {
-        return pageNo == null ? 0 : (pageNo - 1) * pageSize;
+        return (pageNo - 1) * pageSize;
     }
 
     public Integer getPageSize() {
-        return pageSize == null ? 10 : pageNo * pageSize;
+        return pageNo * pageSize;
     }
 
 }

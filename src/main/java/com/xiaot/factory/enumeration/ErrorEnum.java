@@ -8,7 +8,7 @@ public enum ErrorEnum {
     REQUEST_METHOD(404, "不支持的请求，请检查后重试！"),
 
     ERROR(500, "开发人员正在努力中！"),
-    ERROR_DATA_SOURCE(501, "数据库连接异常！"),
+    ERROR_DATA_SOURCE(501, "操作数据库异常！"),
 
     LOGIN_ERROR(201, "账号或密码错误，请重新登录！"),
     LOGIN_PAST(202, "未登录或登录已过期，请重新登录！"),
