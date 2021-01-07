@@ -5,6 +5,17 @@
 
     <select id="listInventory" resultType="inventoryPo">
         select * from od_inventory
+        limit ${pageNo},#{pageSize}
+        <if test="field != null and field != ''">
+            order by ${field}
+            <if test="order != null and order != ''">
+                ${order}
+            </if>
+        </if>
+    </select>
+
+    <select id="listInventoryCount" resultType="integer">
+        select count(1) from od_inventory
     </select>
 
     <insert id="addInventory" parameterType="purChasePo">

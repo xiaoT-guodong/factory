@@ -1,5 +1,6 @@
 package com.xiaot.factory.dao;
 
+import com.xiaot.factory.entity.QueryEntity;
 import com.xiaot.factory.entity.po.InventoryPo;
 import com.xiaot.factory.entity.vo.InventorySelectVo;
 import org.apache.ibatis.annotations.Mapper;
@@ -13,7 +14,13 @@ public interface InventoryDao {
      * 库存列表
      * @return
      */
-    List<InventoryPo> listInventory();
+    List<InventoryPo> listInventory(QueryEntity query);
+
+    /**
+     * 库存列表条数
+     * @return
+     */
+    Integer listInventoryCount();
 
     /**
      * 添加进货流水

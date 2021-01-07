@@ -1,5 +1,6 @@
 package com.xiaot.factory.service;
 
+import com.xiaot.factory.entity.QueryEntity;
 import com.xiaot.factory.entity.po.InventoryPo;
 import com.xiaot.factory.entity.vo.InventorySelectVo;
 
@@ -11,7 +12,13 @@ public interface InventoryService {
      * 库存列表
      * @return
      */
-    List<InventoryPo> list();
+    List<InventoryPo> list(QueryEntity query);
+
+    /**
+     * 库存列表条数
+     * @return
+     */
+    Integer listCount();
 
     /**
      * 添加库存物品

@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import lombok.SneakyThrows;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,6 +43,13 @@ public class ResultUtil {
 
     public static Map<String, Object> success(String msg, Object data) {
         return init(200, msg, data);
+    }
+
+    public static Map<String, Object> page(Integer count, List<?> data) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("count", count == null ? 0 : count);
+        map.put("list", data == null ? Collections.emptyList() : data);
+        return success(map);
     }
 
     public static Map<String, Object> fail() {
