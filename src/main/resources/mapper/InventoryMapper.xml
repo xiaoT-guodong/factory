@@ -4,7 +4,9 @@
 <mapper namespace="com.xiaot.factory.dao.InventoryDao">
 
     <select id="listInventory" resultType="inventoryPo">
-        select * from od_inventory
+        select id, inventory_name inventoryName, inventory_num inventoryNum, inventory_comment inventoryComment
+             , create_time createTime, update_time updateTime
+        from od_inventory
         <if test="field != null and field != ''">
             order by ${field}
             <if test="order != null and order != ''">
