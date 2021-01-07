@@ -1,5 +1,6 @@
 package com.xiaot.factory.service;
 
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.SalesPo;
 import com.xiaot.factory.entity.vo.PurchaseSalesVo;
 
@@ -11,7 +12,13 @@ public interface SalesService {
      * 进库流水
      * @return
      */
-    List<PurchaseSalesVo> list();
+    List<PurchaseSalesVo> list(PageQueryEntity pageQueryEntity);
+
+    /**
+     * 进库流水条数
+     * @return
+     */
+    Integer listCount();
 
     /**
      * 添加出货流水

@@ -6,6 +6,17 @@
     <select id="listSales" resultType="purchaseSalesVo">
         select op.id, oi.inventory_name name, op.sales_num num, sales_price price, sales_total total, oi.inventory_comment comment
         from od_sales op inner join od_inventory oi on op.inventory_id = oi.id
+        limit ${pageNo},${pageSize}
+        <if test="field != null and field != ''">
+            order by ${field}
+            <if test="order != null and order != ''">
+                ${order}
+            </if>
+        </if>
+    </select>
+
+    <select id="listSalesCount" resultType="integer">
+        select count(1) from od_sales op inner join od_inventory oi on op.inventory_id = oi.id
     </select>
 
     <insert id="addSales" parameterType="salesPo">

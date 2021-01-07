@@ -3,6 +3,7 @@ package com.xiaot.factory.service.impl;
 import com.xiaot.factory.config.exception.CrudException;
 import com.xiaot.factory.dao.InventoryDao;
 import com.xiaot.factory.dao.SalesDao;
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.InventoryPo;
 import com.xiaot.factory.entity.po.SalesPo;
 import com.xiaot.factory.entity.vo.PurchaseSalesVo;
@@ -24,8 +25,13 @@ public class SalesServiceImpl implements SalesService {
     private InventoryDao inventoryDao;
 
     @Override
-    public List<PurchaseSalesVo> list() {
-        return salesDao.listSales();
+    public List<PurchaseSalesVo> list(PageQueryEntity pageQueryEntity) {
+        return salesDao.listSales(pageQueryEntity);
+    }
+
+    @Override
+    public Integer listCount() {
+        return salesDao.listSalesCount();
     }
 
     @Transactional
