@@ -1,6 +1,8 @@
 package com.xiaot.factory.util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xiaot.factory.enumeration.ErrorEnum;
+import lombok.SneakyThrows;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +20,7 @@ public class ResultUtil {
      * @return 返回包含code、msg、data的map
      */
     private static Map<String, Object> init(int code, String msg, Object data) {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new MyHashMap();
         map.put("code", code);
         map.put("msg", msg);
         map.put("data", data);
@@ -47,6 +49,17 @@ public class ResultUtil {
 
     public static Map<String, Object> fail(ErrorEnum errorEnum) {
         return init(errorEnum.getCode(), errorEnum.getMsg(), null);
+    }
+
+    static class MyHashMap extends HashMap<String, Object> {
+
+        @SneakyThrows
+        @Override
+        public String toString() {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writeValueAsString(this);
+        }
+
     }
 
 }
