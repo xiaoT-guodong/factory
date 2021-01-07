@@ -3,7 +3,7 @@ package com.xiaot.factory.entity;
 import lombok.Data;
 
 @Data
-public class QueryEntity {
+public class PageQueryEntity {
 
     /**
      * 页码

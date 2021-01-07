@@ -1,6 +1,6 @@
 package com.xiaot.factory.service;
 
-import com.xiaot.factory.entity.QueryEntity;
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.InventoryPo;
 import com.xiaot.factory.entity.vo.InventorySelectVo;
 
@@ -12,7 +12,7 @@ public interface InventoryService {
      * 库存列表
      * @return
      */
-    List<InventoryPo> list(QueryEntity query);
+    List<InventoryPo> list(PageQueryEntity pageQueryEntity);
 
     /**
      * 库存列表条数

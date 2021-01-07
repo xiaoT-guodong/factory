@@ -2,7 +2,7 @@ package com.xiaot.factory.service.impl;
 
 import com.xiaot.factory.config.exception.CrudException;
 import com.xiaot.factory.dao.InventoryDao;
-import com.xiaot.factory.entity.QueryEntity;
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.InventoryPo;
 import com.xiaot.factory.entity.vo.InventorySelectVo;
 import com.xiaot.factory.enumeration.ErrorEnum;
@@ -19,8 +19,8 @@ public class InventoryServiceImpl implements InventoryService {
     private InventoryDao inventoryDao;
 
     @Override
-    public List<InventoryPo> list(QueryEntity query) {
-        return inventoryDao.listInventory(query);
+    public List<InventoryPo> list(PageQueryEntity pageQueryEntity) {
+        return inventoryDao.listInventory(pageQueryEntity);
     }
 
     @Override

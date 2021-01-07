@@ -1,6 +1,6 @@
 package com.xiaot.factory.controller;
 
-import com.xiaot.factory.entity.QueryEntity;
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.InventoryPo;
 import com.xiaot.factory.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,8 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @GetMapping
-    public Map<String, Object> listInventory(QueryEntity query) {
-        return page(inventoryService.listCount(), inventoryService.list(query));
+    public Map<String, Object> listInventory(PageQueryEntity pageQueryEntity) {
+        return page(inventoryService.listCount(), inventoryService.list(pageQueryEntity));
     }
 
     @PostMapping
