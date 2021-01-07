@@ -5,13 +5,13 @@
 
     <select id="listInventory" resultType="inventoryPo">
         select * from od_inventory
-        limit ${pageNo},${pageSize}
         <if test="field != null and field != ''">
             order by ${field}
             <if test="order != null and order != ''">
                 ${order}
             </if>
         </if>
+        limit ${pageNo},${pageSize}
     </select>
 
     <select id="listInventoryCount" resultType="integer">
