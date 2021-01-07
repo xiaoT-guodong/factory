@@ -1,5 +1,6 @@
 package com.xiaot.factory.controller;
 
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.PurchasePo;
 import com.xiaot.factory.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+import static com.xiaot.factory.util.ResultUtil.page;
 import static com.xiaot.factory.util.ResultUtil.success;
 
 @RestController
@@ -17,8 +19,8 @@ public class PurchaseController {
     private PurchaseService purchaseService;
 
     @GetMapping
-    public Map<String, Object> listPurchase() {
-        return success(purchaseService.list());
+    public Map<String, Object> listPurchase(PageQueryEntity pageQueryEntity) {
+        return page(purchaseService.listCount(), purchaseService.list(pageQueryEntity));
     }
 
     @PostMapping

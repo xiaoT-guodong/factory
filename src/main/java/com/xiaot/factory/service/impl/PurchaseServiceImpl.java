@@ -3,6 +3,7 @@ package com.xiaot.factory.service.impl;
 import com.xiaot.factory.config.exception.CrudException;
 import com.xiaot.factory.dao.InventoryDao;
 import com.xiaot.factory.dao.PurchaseDao;
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.InventoryPo;
 import com.xiaot.factory.entity.po.PurchasePo;
 import com.xiaot.factory.entity.vo.PurchaseSalesVo;
@@ -24,8 +25,13 @@ public class PurchaseServiceImpl implements PurchaseService {
     private InventoryDao inventoryDao;
 
     @Override
-    public List<PurchaseSalesVo> list() {
-        return purchaseDao.listPurchase();
+    public List<PurchaseSalesVo> list(PageQueryEntity pageQueryEntity) {
+        return purchaseDao.listPurchase(pageQueryEntity);
+    }
+
+    @Override
+    public Integer listCount() {
+        return purchaseDao.listPurchaseCount();
     }
 
     @Transactional
