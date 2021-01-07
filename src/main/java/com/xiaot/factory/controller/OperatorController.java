@@ -4,10 +4,7 @@ import com.xiaot.factory.entity.po.OperatorPo;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import com.xiaot.factory.service.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -45,6 +42,12 @@ public class OperatorController {
     public Map<String, Object> update(OperatorPo operatorPo) {
         operatorService.updateOperator(operatorPo);
         return success("修改成功");
+    }
+
+    @GetMapping("/logout")
+    public Map<String, Object> logout(HttpServletRequest request) {
+        request.getSession().removeAttribute("loginUser");
+        return success("注销成功。");
     }
 
 }
