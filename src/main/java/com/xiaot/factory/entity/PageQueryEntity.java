@@ -8,12 +8,12 @@ public class PageQueryEntity {
     /**
      * 页码
      */
-    private Integer pageNo = 1;
+    private int pageNo = 1;
 
     /**
      * 条数
      */
-    private Integer pageSize = 10;
+    private int pageSize = 10;
 
     /**
      * 排序字段
