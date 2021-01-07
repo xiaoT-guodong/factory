@@ -2,9 +2,7 @@ package com.xiaot.factory.entity.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.xiaot.factory.util.DateUtil;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,8 +11,6 @@ import java.util.Date;
  * 进库
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class PurchasePo {
 
     private Integer id;
