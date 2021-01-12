@@ -2,6 +2,7 @@ package com.xiaot.factory.service;
 
 import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.OperatorPo;
+import com.xiaot.factory.entity.vo.OperatorVo;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface OperatorService {
      * @param password
      * @return
      */
-    OperatorPo findOperator(String loginName, String password);
+    OperatorVo findOperator(String loginName, String password);
 
     /**
      * 操作员列表

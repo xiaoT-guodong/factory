@@ -2,6 +2,7 @@ package com.xiaot.factory.dao;
 
 import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.OperatorPo;
+import com.xiaot.factory.entity.vo.OperatorVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,7 +17,7 @@ public interface OperatorDao {
      * @param password
      * @return
      */
-    OperatorPo findOperator(@Param("loginName") String loginName, @Param("password") String password);
+    OperatorVo findOperator(@Param("loginName") String loginName, @Param("password") String password);
 
     /**
      * 操作员列表

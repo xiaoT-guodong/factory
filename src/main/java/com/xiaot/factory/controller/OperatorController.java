@@ -2,6 +2,7 @@ package com.xiaot.factory.controller;
 
 import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.OperatorPo;
+import com.xiaot.factory.entity.vo.OperatorVo;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import com.xiaot.factory.service.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class OperatorController {
 
     @PostMapping("/login")
     public Map<String, Object> login(String loginName, String password, HttpServletRequest request) {
-        OperatorPo operator = operatorService.findOperator(loginName, password);
+        OperatorVo operator = operatorService.findOperator(loginName, password);
         if(operator != null) {
             request.getSession().setAttribute("loginUser", operator);
             return success(operator);

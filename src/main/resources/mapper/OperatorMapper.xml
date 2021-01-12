@@ -3,12 +3,12 @@
 
 <mapper namespace="com.xiaot.factory.dao.OperatorDao">
 
-    <select id="findOperator" resultType="operatorPo">
+    <select id="findOperator" resultType="operatorVo">
         select * from bs_operator where login_name = #{loginName} and password = #{password}
     </select>
     
     <select id="listOperator" resultType="operatorPo">
-        select id, login_name loginName, password, username, role_id roleId from bs_operator
+        select id, login_name loginName, password, username from bs_operator
         <if test="field != null and field != ''">
             order by ${field}
             <if test="order != null and order != ''">
