@@ -8,7 +8,7 @@
     </select>
     
     <select id="listOperator" resultType="operatorPo">
-        select login_name loginName, password, username from bs_operator
+        select id, login_name loginName, password, username from bs_operator
         <if test="field != null and field != ''">
             order by ${field}
             <if test="order != null and order != ''">
