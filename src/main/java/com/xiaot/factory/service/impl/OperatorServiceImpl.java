@@ -2,11 +2,14 @@ package com.xiaot.factory.service.impl;
 
 import com.xiaot.factory.config.exception.CrudException;
 import com.xiaot.factory.dao.OperatorDao;
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.OperatorPo;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import com.xiaot.factory.service.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OperatorServiceImpl implements OperatorService {
@@ -17,6 +20,16 @@ public class OperatorServiceImpl implements OperatorService {
     @Override
     public OperatorPo findOperator(String loginName, String password) {
         return operatorDao.findOperator(loginName, password);
+    }
+
+    @Override
+    public List<OperatorPo> list(PageQueryEntity pageQueryEntity) {
+        return operatorDao.listOperator(pageQueryEntity);
+    }
+
+    @Override
+    public Integer listCount() {
+        return operatorDao.listCount();
     }
 
     @Override

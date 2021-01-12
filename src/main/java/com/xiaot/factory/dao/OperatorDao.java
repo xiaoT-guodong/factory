@@ -1,8 +1,11 @@
 package com.xiaot.factory.dao;
 
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.OperatorPo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface OperatorDao {
@@ -14,6 +17,19 @@ public interface OperatorDao {
      * @return
      */
     OperatorPo findOperator(@Param("loginName") String loginName, @Param("password") String password);
+
+    /**
+     * 操作员列表
+     * @param pageQueryEntity
+     * @return
+     */
+    List<OperatorPo> listOperator(PageQueryEntity pageQueryEntity);
+
+    /**
+     * 操作员列表条数
+     * @return
+     */
+    Integer listCount();
 
     /**
      * 查找登录账号是否存在

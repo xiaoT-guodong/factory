@@ -1,5 +1,6 @@
 package com.xiaot.factory.controller;
 
+import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.OperatorPo;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import com.xiaot.factory.service.OperatorService;
@@ -9,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-import static com.xiaot.factory.util.ResultUtil.fail;
-import static com.xiaot.factory.util.ResultUtil.success;
+import static com.xiaot.factory.util.ResultUtil.*;
 
 /**
  * 登录相关接口
@@ -30,6 +30,11 @@ public class OperatorController {
             return success(operator);
         }
         return fail(ErrorEnum.LOGIN_ERROR);
+    }
+
+    @GetMapping("/operator")
+    public Map<String, Object> list(PageQueryEntity pageQueryEntity) {
+        return page(operatorService.listCount(), operatorService.list(pageQueryEntity));
     }
 
     @PostMapping("/operator")
