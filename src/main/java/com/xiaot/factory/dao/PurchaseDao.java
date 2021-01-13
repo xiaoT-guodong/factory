@@ -4,9 +4,11 @@ import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.PurchasePo;
 import com.xiaot.factory.entity.vo.PurchaseSalesVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 @Mapper
 public interface PurchaseDao {
 

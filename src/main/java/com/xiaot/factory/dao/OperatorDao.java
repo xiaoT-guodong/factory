@@ -5,9 +5,11 @@ import com.xiaot.factory.entity.po.OperatorPo;
 import com.xiaot.factory.entity.vo.OperatorVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 @Mapper
 public interface OperatorDao {
 
