@@ -21,7 +21,7 @@ public interface OperatorService {
      * @param pageQueryEntity
      * @return
      */
-    List<OperatorPo> list(PageQueryEntity pageQueryEntity);
+    List<OperatorVo> list(PageQueryEntity pageQueryEntity);
 
     /**
      * 操作员列表条数
@@ -40,5 +40,11 @@ public interface OperatorService {
      * @param operatorPo
      */
     void updateOperator(OperatorPo operatorPo);
+
+    /**
+     * 删除操作员
+     * @param operatorId
+     */
+    void deleteOperator(Integer operatorId);
 
 }

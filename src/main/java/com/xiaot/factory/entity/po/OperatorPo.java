@@ -1,8 +1,10 @@
 package com.xiaot.factory.entity.po;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
+@Accessors(chain = true)
 public class OperatorPo {
 
     private Integer id;
@@ -22,5 +24,10 @@ public class OperatorPo {
      * 角色id
      */
     private Integer roleId;
+
+    /**
+     * 是否删除
+     */
+    private Integer delete;
 
 }

@@ -2,7 +2,6 @@ package com.xiaot.factory.service.impl;
 
 import com.xiaot.factory.config.exception.CrudException;
 import com.xiaot.factory.dao.OperatorDao;
-import com.xiaot.factory.dao.OperatorRoleDao;
 import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.OperatorPo;
 import com.xiaot.factory.entity.vo.OperatorVo;
@@ -19,19 +18,14 @@ public class OperatorServiceImpl implements OperatorService {
     @Autowired
     private OperatorDao operatorDao;
 
-    @Autowired
-    private OperatorRoleDao operatorRoleDao;
-
     @Override
     public OperatorVo findOperator(String loginName, String password) {
         OperatorVo operator = operatorDao.findOperator(loginName, password);
-        List<String> hasRoles = operatorRoleDao.findHasRoles(operator.getId());
-        operator.setRoles(hasRoles);
         return operator;
     }
 
     @Override
-    public List<OperatorPo> list(PageQueryEntity pageQueryEntity) {
+    public List<OperatorVo> list(PageQueryEntity pageQueryEntity) {
         return operatorDao.listOperator(pageQueryEntity);
     }
 
@@ -60,4 +54,8 @@ public class OperatorServiceImpl implements OperatorService {
         }
     }
 
+    @Override
+    public void deleteOperator(Integer operatorId) {
+        operatorDao.updateOperator(new OperatorPo().setId(operatorId).setDelete(1));
+    }
 }

@@ -26,7 +26,7 @@ public interface OperatorDao {
      * @param pageQueryEntity
      * @return
      */
-    List<OperatorPo> listOperator(PageQueryEntity pageQueryEntity);
+    List<OperatorVo> listOperator(PageQueryEntity pageQueryEntity);
 
     /**
      * 操作员列表条数

@@ -4,11 +4,14 @@
 <mapper namespace="com.xiaot.factory.dao.OperatorDao">
 
     <select id="findOperator" resultType="operatorVo">
-        select * from bs_operator where login_name = #{loginName} and password = #{password}
+        select bo.id, bo.login_name loginName, bo.username, br.role_name roles
+        from bs_operator bo inner join bs_role br on bo.role_id = br.id
+        where login_name = #{loginName} and `password` = #{password} and `delete` = 0
     </select>
     
-    <select id="listOperator" resultType="operatorPo">
-        select id, login_name loginName, password, username from bs_operator
+    <select id="listOperator" resultType="operatorVo">
+        select bo.id, bo.login_name loginName, bo.password, bo.username, bo.`delete`, br.role_name roles
+        from bs_operator bo inner join bs_role br on bo.role_id = br.id
         <if test="field != null and field != ''">
             order by ${field}
             <if test="order != null and order != ''">
@@ -30,7 +33,7 @@
     </select>
     
     <insert id="addOperator" parameterType="operatorPo">
-        insert into bs_operator (login_name, password, username, roleId)
+        insert into bs_operator (login_name, `password`, username, role_id)
         values (#{loginName}, #{password}, #{username}, #{roleId})
     </insert>
     
@@ -40,13 +43,16 @@
             , login_name = #{loginName}
         </if>
         <if test="password != null and password != ''">
-            , password = #{password}
+            , `password` = #{password}
         </if>
         <if test="username != null and username != ''">
             , username = #{username}
         </if>
         <if test="roleId != null and roleId != ''">
-            , roleId = #{roleId}
+            , role_id = #{roleId}
+        </if>
+        <if test="delete != null and delete != ''">
+            , `delete` = #{delete}
         </if>
         where id = #{id}
     </update>

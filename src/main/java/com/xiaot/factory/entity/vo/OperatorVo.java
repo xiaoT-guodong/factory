@@ -2,8 +2,6 @@ package com.xiaot.factory.entity.vo;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class OperatorVo {
 
@@ -15,18 +13,21 @@ public class OperatorVo {
     private String loginName;
 
     /**
-     * 密码
-     */
-    private String password;
-
-    /**
      * 用户名
      */
     private String username;
 
     /**
+     * 是否删除
+     */
+    private String delete;
+
+    /**
      * 拥有的角色
      */
-    List<String> roles;
+    String roles;
 
+    public void setDelete(Boolean delete) {
+        this.delete = delete ? "已删除" : "正常";
+    }
 }

@@ -50,6 +50,12 @@ public class OperatorController {
         return success("修改成功");
     }
 
+    @DeleteMapping("/operator")
+    public Map<String, Object> delete(Integer operatorId) {
+        operatorService.deleteOperator(operatorId);
+        return success("删除成功");
+    }
+
     @GetMapping("/logout")
     public Map<String, Object> logout(HttpServletRequest request) {
         request.getSession().removeAttribute("loginUser");
