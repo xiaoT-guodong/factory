@@ -22,6 +22,7 @@ public enum ErrorEnum {
 
     ROLE_ADD(216, "角色添加失败！"),
     ROLE_UPDATE(217, "角色修改失败！"),
+    ROLE_DELETE(218, "角色删除失败！"),
 
     PURCHASE_ADD(221, "进货添加失败！"),
     PURCHASE_UPDATE(222, "进货修改失败！"),

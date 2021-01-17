@@ -20,4 +20,8 @@
         where id = #{id}
     </update>
 
+    <delete id="deleteRole" parameterType="integer">
+        delete from bs_role where id = #{roleId}
+    </delete>
+
 </mapper>

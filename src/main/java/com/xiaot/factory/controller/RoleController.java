@@ -38,4 +38,10 @@ public class RoleController {
         return success();
     }
 
+    @DeleteMapping
+    public Map<String, Object> delete(Integer roleId) {
+        roleService.deleteRole(roleId);
+        return success();
+    }
+
 }

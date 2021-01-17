@@ -35,4 +35,10 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
+    @Override
+    public void deleteRole(Integer roleId) {
+        if (roleDao.deleteRole(roleId) < 1) {
+            throw new CrudException(ErrorEnum.ROLE_DELETE);
+        }
+    }
 }

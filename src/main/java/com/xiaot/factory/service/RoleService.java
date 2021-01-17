@@ -24,4 +24,10 @@ public interface RoleService {
      */
     void updateRole(RolePo rolePo);
 
+    /**
+     * 删除角色
+     * @param roleId
+     */
+    void deleteRole(Integer roleId);
+
 }
