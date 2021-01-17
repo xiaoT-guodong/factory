@@ -3,6 +3,7 @@ package com.xiaot.factory.config.handle;
 import com.xiaot.factory.config.exception.BaseException;
 import com.xiaot.factory.enumeration.ErrorEnum;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -31,7 +32,11 @@ public class ExceptionHandle {
             return;
         }
         if(e instanceof HttpRequestMethodNotSupportedException) {
-            response.getWriter().write(fail(ErrorEnum.REQUEST_METHOD).toString());
+            response.getWriter().write(fail(ErrorEnum.LOGIN_PAST).toString());
+            return;
+        }
+        if(e instanceof UnknownAccountException) {
+            response.getWriter().write(fail(ErrorEnum.LOGIN_ERROR).toString());
             return;
         }
         e.printStackTrace();

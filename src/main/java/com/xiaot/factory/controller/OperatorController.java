@@ -2,16 +2,16 @@ package com.xiaot.factory.controller;
 
 import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.OperatorPo;
-import com.xiaot.factory.entity.vo.OperatorVo;
-import com.xiaot.factory.enumeration.ErrorEnum;
 import com.xiaot.factory.service.OperatorService;
+import com.xiaot.factory.util.ShiroUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-import static com.xiaot.factory.util.ResultUtil.*;
+import static com.xiaot.factory.util.ResultUtil.page;
+import static com.xiaot.factory.util.ResultUtil.success;
 
 /**
  * 登录相关接口
@@ -25,12 +25,8 @@ public class OperatorController {
 
     @PostMapping("/login")
     public Map<String, Object> login(String loginName, String password, HttpServletRequest request) {
-        OperatorVo operator = operatorService.findOperator(loginName, password);
-        if(operator != null) {
-            request.getSession().setAttribute("loginUser", operator);
-            return success(operator);
-        }
-        return fail(ErrorEnum.LOGIN_ERROR);
+        ShiroUtil.login(loginName, password);
+        return success(ShiroUtil.loginUser());
     }
 
     @GetMapping("/operator")
@@ -58,7 +54,7 @@ public class OperatorController {
 
     @GetMapping("/logout")
     public Map<String, Object> logout(HttpServletRequest request) {
-        request.getSession().removeAttribute("loginUser");
+        ShiroUtil.logout();
         return success("注销成功。");
     }
 

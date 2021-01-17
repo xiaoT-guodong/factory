@@ -5,8 +5,6 @@ package com.xiaot.factory.enumeration;
  */
 public enum ErrorEnum {
 
-    REQUEST_METHOD(404, "不支持的请求，请检查后重试！"),
-
     ERROR(500, "开发人员正在努力中！"),
     ERROR_DATA_SOURCE(501, "操作数据库异常！"),
 
