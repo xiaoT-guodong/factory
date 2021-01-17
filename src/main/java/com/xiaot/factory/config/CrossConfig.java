@@ -14,6 +14,7 @@ public class CrossConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("*")
                 .allowedMethods(methods);
+//                .allowCredentials(true);
     }
 
 }
