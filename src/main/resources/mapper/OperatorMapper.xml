@@ -4,14 +4,12 @@
 <mapper namespace="com.xiaot.factory.dao.OperatorDao">
 
     <select id="findOperator" resultType="operatorVo">
-        select bo.id, bo.login_name loginName, bo.password, bo.username, bo.delete, br.role_name roles
-        from bs_operator bo inner join bs_role br on bo.role_id = br.id
+        <include refid="selectOperator"/>
         where login_name = #{loginName} and `password` = #{password} and `delete` = 0
     </select>
     
     <select id="listOperator" resultType="operatorVo">
-        select bo.id, bo.login_name loginName, bo.password, bo.username, bo.`delete`, bo.role_id roles
-        from bs_operator bo
+        <include refid="selectOperator"/>
         <if test="field != null and field != ''">
             order by ${field}
             <if test="order != null and order != ''">
@@ -20,7 +18,12 @@
         </if>
         limit ${pageNo},${pageSize}
     </select>
-    
+
+    <sql id="selectOperator">
+        select bo.id, bo.login_name loginName, bo.password, bo.username, bo.`delete`, br.role_name roles
+        from bs_operator bo inner join bs_role br on bo.role_id = br.id
+    </sql>
+
     <select id="listCount" resultType="integer">
         select count(1) from bs_operator
     </select>
