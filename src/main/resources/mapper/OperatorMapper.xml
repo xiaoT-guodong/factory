@@ -4,7 +4,7 @@
 <mapper namespace="com.xiaot.factory.dao.OperatorDao">
 
     <select id="findOperator" resultType="operatorVo">
-        select bo.id, bo.login_name loginName, bo.passowrd, bo.username, bo.delete, br.role_name roles
+        select bo.id, bo.login_name loginName, bo.password, bo.username, bo.delete, br.role_name roles
         from bs_operator bo inner join bs_role br on bo.role_id = br.id
         where login_name = #{loginName} and `password` = #{password} and `delete` = 0
     </select>
