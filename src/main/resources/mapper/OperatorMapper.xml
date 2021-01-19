@@ -10,7 +10,7 @@
     </select>
     
     <select id="listOperator" resultType="operatorVo">
-        select bo.id, bo.login_name loginName, bo.password, bo.username, bo.`delete`, br.role_id roles
+        select bo.id, bo.login_name loginName, bo.password, bo.username, bo.`delete`, bo.role_id roles
         from bs_operator bo
         <if test="field != null and field != ''">
             order by ${field}
