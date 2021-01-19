@@ -4,3 +4,4 @@ spring:
     url: jdbc:mysql://106.15.10.11:3306/factory?serverTimezone=GMT%2B8
     username: root
     password:
+login: false
