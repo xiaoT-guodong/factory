@@ -13,6 +13,11 @@ public class OperatorVo {
     private String loginName;
 
     /**
+     * 密码
+     */
+    private String password;
+
+    /**
      * 用户名
      */
     private String username;
