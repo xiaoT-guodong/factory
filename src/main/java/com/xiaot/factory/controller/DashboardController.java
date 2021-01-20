@@ -25,4 +25,19 @@ public class DashboardController {
         return success(dashboardService.overview());
     }
 
+    @GetMapping("/purchasePie")
+    public Map<String, Object> purchasePie() {
+        return success(dashboardService.purchasePie());
+    }
+
+    @GetMapping("/salesPie")
+    public Map<String, Object> salesPie() {
+        return success(dashboardService.salesPie());
+    }
+
+    @GetMapping("/monthLine")
+    public Map<String, Object> monthLine() {
+        return success(dashboardService.monthLine());
+    }
+
 }
