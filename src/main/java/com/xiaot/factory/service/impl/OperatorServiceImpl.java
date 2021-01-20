@@ -56,6 +56,8 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Override
     public void deleteOperator(Integer operatorId) {
-        operatorDao.updateOperator(new OperatorPo().setId(operatorId).setDelete(1));
+        if(operatorDao.updateOperator(new OperatorPo().setId(operatorId).setDelete(1)) < 1) {
+            throw new CrudException(ErrorEnum.OPERATOR_UPDATE);
+        }
     }
 }
