@@ -25,32 +25,12 @@
         group by os.inventory_id
     </select>
     
-    <select id="monthLine" resultType="map">
-        select
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 0) purchaseOne,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 1) purchaseTwo,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 2) purchaseThree,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 3) purchaseFour,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 4) purchaseFive,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 5) purchaseSix,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 6) purchaseSeven,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 7) purchaseEight,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 8) purchaseNine,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 9) purchaseTen,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 10) purchaseEleven,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 11) purchaseTwelve,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 0) salesOne,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 1) salesTwo,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 2) salesThree,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 3) salesFour,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 4) salesFive,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 5) salesSix,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 6) salesSeven,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 7) salesEight,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 8) salesNine,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 9) salesTen,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 10) salesEleven,
-            (select ifnull(sum(op.purchase_total), 0) from od_purchase op where TIMESTAMPDIFF(month, op.create_time, DATE_FORMAT(now(), "%Y-%m-%d")) = 11) salesTwelve
+    <select id="purchaseMonthLine" resultType="map">
+        select date_format(create_time, "%Y-%m") date, ifnull(sum(purchase_total), 0) money from od_purchase group by date
+    </select>
+
+    <select id="salesMonthLine" resultType="map">
+        select date_format(create_time, "%Y-%m") date, ifnull(sum(sales_total), 0) money from od_sales group by date
     </select>
 
 </mapper>

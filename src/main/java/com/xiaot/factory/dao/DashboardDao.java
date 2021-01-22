@@ -29,9 +29,15 @@ public interface DashboardDao {
     List<Map<String, Object>> salesPie();
 
     /**
-     * 近一年月售出
+     * 购买近一年每月花费
      * @return
      */
-    Map<String, Object> monthLine();
+    List<Map<String, Object>> purchaseMonthLine();
+
+    /**
+     * 卖出近一年每月收入
+     * @return
+     */
+    List<Map<String, Object>> salesMonthLine();
 
 }
