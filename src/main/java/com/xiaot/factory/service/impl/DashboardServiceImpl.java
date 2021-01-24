@@ -34,12 +34,17 @@ public class DashboardServiceImpl implements DashboardService {
         Map<String, Object> lineData = new HashMap<>();
         List<Map<String, Object>> purchase = dashboardDao.purchaseMonthLine();
         List<Map<String, Object>> sales = dashboardDao.salesMonthLine();
-        lineData.put("purchase", getLineDate(purchase));
-        lineData.put("sales", getLineDate(sales));
+        lineData.put("purchase", getLineData(purchase));
+        lineData.put("sales", getLineData(sales));
+        List<String> date = new ArrayList<>();
+        for (int i = 11; i >= 0; i--) {
+            date.add(getFormatDate(i));
+        }
+        lineData.put("date", date);
         return lineData;
     }
 
-    private List<Object> getLineDate(List<Map<String, Object>> data) {
+    private List<Object> getLineData(List<Map<String, Object>> data) {
         if (data == null) {
             data = Collections.emptyList();
         }

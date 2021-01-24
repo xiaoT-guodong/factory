@@ -10,6 +10,7 @@
     
     <select id="listOperator" resultType="operatorVo">
         <include refid="selectOperator"/>
+        where bo.role_id != 1
         <if test="field != null and field != ''">
             order by ${field}
             <if test="order != null and order != ''">
