@@ -53,8 +53,22 @@ public class SalesServiceImpl implements SalesService {
         }
     }
 
+    @Transactional
     @Override
     public void updateSales(SalesPo salesPo) {
+        // 原售出数量
+        int salesNum = salesDao.findSalesNum(salesPo.getId());
+        // 原库存数量
+        int inventoryNum = inventoryDao.findInventoryNum(salesPo.getInventoryId());
+        int num = inventoryNum + salesNum - salesPo.getSalesNum();
+        if(num < 0) {
+            throw new CrudException(ErrorEnum.SALES_SURPLUS);
+        }
+        InventoryPo inventoryPo = new InventoryPo().setId(salesPo.getInventoryId())
+                .setInventoryNum(num);
+        if(inventoryDao.updateInventory(inventoryPo) < 1) {
+            throw new CrudException(ErrorEnum.PURCHASE_INVENTORY_UPDATE);
+        }
         if(salesDao.updateSales(salesPo) < 1) {
             throw new CrudException(ErrorEnum.SALES_UPDATE);
         }

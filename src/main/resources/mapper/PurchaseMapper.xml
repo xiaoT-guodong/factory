@@ -38,4 +38,8 @@
         where id = #{id}
     </update>
 
+    <select id="findPurchaseNum" resultType="int">
+        select purchase_num purchaseNum from od_purchase where id = #{id}
+    </select>
+
 </mapper>

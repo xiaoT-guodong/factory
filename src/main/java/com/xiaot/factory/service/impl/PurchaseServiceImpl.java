@@ -49,8 +49,23 @@ public class PurchaseServiceImpl implements PurchaseService {
         }
     }
 
+    @Transactional
     @Override
     public void updatePurchase(PurchasePo purchasePo) {
+        // 原进货数量
+        int purchaseNum = purchaseDao.findPurchaseNum(purchasePo.getId());
+        // 原库存数量
+        int inventoryNum = inventoryDao.findInventoryNum(purchasePo.getInventoryId());
+        // 原数量和修改数量相差数量
+        int num = inventoryNum - purchaseNum + purchasePo.getPurchaseNum();
+        if(num < 0) {
+            throw new CrudException(ErrorEnum.SALES_SURPLUS);
+        }
+        InventoryPo inventoryPo = new InventoryPo().setId(purchasePo.getInventoryId())
+                                                .setInventoryNum(num);
+        if(inventoryDao.updateInventory(inventoryPo) < 1) {
+            throw new CrudException(ErrorEnum.PURCHASE_INVENTORY_UPDATE);
+        }
         if(purchaseDao.updatePurchase(purchasePo) < 1) {
             throw new CrudException(ErrorEnum.PURCHASE_UPDATE);
         }

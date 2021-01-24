@@ -52,10 +52,10 @@
         <if test="username != null and username != ''">
             , username = #{username}
         </if>
-        <if test="roleId != null and roleId != ''">
+        <if test="roleId != null">
             , role_id = #{roleId}
         </if>
-        <if test="delete != null and delete != ''">
+        <if test="delete != null">
             , `delete` = #{delete}
         </if>
         where id = #{id}

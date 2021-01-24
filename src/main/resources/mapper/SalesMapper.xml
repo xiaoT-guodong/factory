@@ -38,4 +38,8 @@
         where id = #{id}
     </update>
 
+    <select id="findSalesNum" resultType="int">
+        select sales_num from od_sales where id = #{id}
+    </select>
+
 </mapper>

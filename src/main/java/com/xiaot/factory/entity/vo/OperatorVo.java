@@ -25,14 +25,11 @@ public class OperatorVo {
     /**
      * 是否删除
      */
-    private String delete;
+    private Integer delete;
 
     /**
      * 拥有的角色
      */
     String roles;
 
-    public void setDelete(Boolean delete) {
-        this.delete = delete ? "已删除" : "正常";
-    }
 }

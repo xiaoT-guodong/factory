@@ -4,6 +4,7 @@ import com.xiaot.factory.entity.PageQueryEntity;
 import com.xiaot.factory.entity.po.SalesPo;
 import com.xiaot.factory.entity.vo.PurchaseSalesVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,5 +38,12 @@ public interface SalesDao {
      * @return
      */
     int updateSales(SalesPo salesPo);
+
+    /**
+     * 查找出货数量
+     * @param id
+     * @return
+     */
+    int findSalesNum(@Param("id") Integer id);
 
 }
